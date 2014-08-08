@@ -143,7 +143,7 @@ class Editor {
 
 }
 
-include_once 'Test.php';
+
 $editor = new Editor();
 $editor->doEditingInPhp();
 ?>
