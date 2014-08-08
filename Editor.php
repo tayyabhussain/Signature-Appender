@@ -143,8 +143,5 @@ class Editor {
 
 }
 
-
-$editor = new Editor();
-$editor->doEditingInPhp();
 ?>
 
