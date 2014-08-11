@@ -22,6 +22,7 @@
     "grunt-phpdocumentor": "^0.4.1",
     "grunt-phpmd": "~*.*.*",
     "grunt-phpunit": "*.*.*",
+    "grunt-shell": "^0.7.0",
     "jshint-stylish": "~0.1.4",
     "load-grunt-tasks": "~0.2.0",
     "time-grunt": "~0.2.3"

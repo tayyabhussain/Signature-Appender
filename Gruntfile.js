@@ -6,12 +6,13 @@ module.exports = function(grunt) {
 
       phpmd: {
        application: {
-        dir: "/home/coeus/Documents/EditorDriver.php"
+        dir: "./"
       },
       options: {
        bin: 'vendor/bin/phpmd',
-       rulesets: 'codesize'
-
+       suffixes: 'php',
+       exclude: 'docs, node_module, vendor',
+       rulesets: 'naming'
 
      }
    }
@@ -19,7 +20,7 @@ module.exports = function(grunt) {
 
    phpcs: {
     application: {
-      dir: ['/home/coeus/Documents/EditorDriver.php']
+      dir: ['EditorDriver.php','Editor.php']
     },
     options: {
       bin: 'vendor/bin/phpcs',
@@ -30,15 +31,15 @@ module.exports = function(grunt) {
 
   phpcpd: {
     application: {
-      dir: '/home/coeus/Documents/*.php'
+      dir: '*.php'
     },
     options: {
       bin: 'vendor/bin/phpcpd',
       quiet: true
     }
   }
-
   ,
+
   phpdocumentor: {
     dist: {
       options: {
@@ -47,15 +48,26 @@ module.exports = function(grunt) {
       }
     }
   }
-   
-});
+  ,
+  shell: {                                
+      listFolders: {                      // Target directory
+        options: {                     
+          stderr: false
+        },
+          command: 'php phpdcd.phar *.php' // to run php dcd through shell 
+        }
+      }
+
+    });
 
     // Load required modules
     grunt.loadNpmTasks('grunt-phpmd');
     grunt.loadNpmTasks('grunt-phpcs');
     grunt.loadNpmTasks('grunt-phpcpd');
     grunt.loadNpmTasks('grunt-phpdocumentor');
+    grunt.loadNpmTasks('grunt-shell');
+
 
     // Task definitions
-    grunt.registerTask('default', ['phpcs', 'phpmd','phpcpd','phpdocumentor']);
+    grunt.registerTask('default', ['phpcs', 'phpmd','phpcpd','phpdocumentor','shell']);
   };
