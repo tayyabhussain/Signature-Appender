@@ -10,7 +10,8 @@
  * @version    Version 1.0
  * 
  */
-class Editor {
+class Editor
+{
 
     /**
      * @var string pathToDir for path to the directory
@@ -31,7 +32,8 @@ class Editor {
      * Constructor
      * This constructor is to initilize all the class variables
      */
-    public function __construct() {
+    public function __construct()
+    {
         $pathToDir = NULL;
 
         $textInput = NULL;
@@ -42,17 +44,19 @@ class Editor {
     /**
      * doEditingInPhp
      *
-     * This is main function of Editor class, It prompts user to input the path
-     * to the directory and also prompt to enter the signature that we want to 
-     * add at the top of every .php file present in provided directory.
-     * This function also provide information regarding files present in provided
-     * directory i.e name and size of each file before and after updation by calling
-     * another method finalizing($count, $filesArray).
+     * This is main function of Editor class, It prompts user to input
+     * the path to the directory and also prompt to enter the signature
+     * that we want to add at the top of every .php file present in
+     * provided directory. This function also provide information
+     * regarding files present in provided directory i.e name and size
+     * of each file before and after updation by calling another method 
+     * finalizing($count, $filesArray).
      *
      * @param this function not receiving any parameter
      * @return this function is not returning anything
      */
-    public function doEditingInPhp() {
+    public function doEditingInPhp()
+    {
 
         if (!defined("STDIN")) {
             define("STDIN", fopen('php://stdin', 'r'));
@@ -60,7 +64,8 @@ class Editor {
 
         // getting path from user
 
-        echo "Hello! What is your complete path to the directory (enter below):\n";
+        echo "Hello! What is your complete path to the".
+        " directory (enter below):\n";
 
         $pathToDir = fread(STDIN, 80);
 
@@ -72,17 +77,20 @@ class Editor {
 
         //getting text from user
 
-        echo "Hello! Enter the Text that you want to merge in php file (enter below):\n";
+        echo "Hello! Enter the Text that you want to merge".
+        " in php file (enter below):\n";
 
         $textInput = fread(STDIN, 80);
 
         $textInput = trim($textInput);
 
-        // using a count variable to check number of .php files present in directory
+        // using a count variable to check number
+        // of .php files present in directory
 
         $count = 0;
 
-        // foreach loop to iterate each .php file in given directory
+        // foreach loop to iterate each .php file
+        // in given directory
 
         foreach ($filesArray as $file) {
 
@@ -115,22 +123,26 @@ class Editor {
     /**
      * finalizing
      *
-     * This function takes two parameters and checks how many files have been updated
-     * and also shows the names and size of each file updated, if there is no file
-     * updated then it will shows an error message/
+     * This function takes two parameters and checks how many
+     * files have been updated and also shows the names
+     * and size of each file updated, if there is no file
+     * updated then it will shows an error message
      *
      * @param (Array) ($filesArray) this array holds path to each .php file
      * @param (number) ($count) this variable is to check that how many files
      * has been updated
      * @return this function is not returning anything
      */
-    public static function finalizing($count, $filesArray) {
+    public static function finalizing($count, $filesArray)
+    {
         if ($count == 0) {
 
-            echo "Error ! There is no .php file in given directory (check path) \n";
+            echo "Error ! There is no .php file in given".
+            " directory (check path) \n";
         } else {
 
-            echo $count . " files has been updated\n New details are given below \n";
+            echo $count . " files has been updated\n".
+            " New details are given below \n";
 
             // list down files after updation
 
@@ -143,5 +155,5 @@ class Editor {
 
 }
 
-?>
+
 

@@ -1,0 +1,46 @@
+module.exports = function(grunt) {
+
+    // Project configuration.
+    grunt.initConfig({
+  /*      concat: {
+            "options": { 
+                "separator": ";" 
+            },
+            "build": {
+                "src": ["file1.js", "file2.js"],
+                "dest": "app.js"
+            }
+        }, */
+        
+        phpmd: {
+           application: {
+            dir: "Signature-Appender/PhpFiles"
+        },
+        options: {
+           bin: 'vendor/bin/phpmd',
+           rulesets: 'codesize'
+           
+
+       }
+   }  ,
+
+   phpcs: {
+    application: {
+        dir: ['Editor.php', 'EditorDriver.php']
+    },
+    options: {
+        bin: 'vendor/bin/phpcs',
+        standard: 'Zend'
+    }
+}  
+
+});
+
+    // Load required modules
+  //  grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-phpmd');
+    grunt.loadNpmTasks('grunt-phpcs');
+
+    // Task definitions
+    grunt.registerTask('default', [/*'concat',*/'phpcs', 'phpmd']);
+};

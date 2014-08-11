@@ -1,0 +1,78 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/bin/npm', 'install', 'grunt-phpdcd' ]
+2 info using npm@2.0.0-alpha-5
+3 info using node@v0.10.30
+4 verbose node symlink /usr/bin/node
+5 verbose readDependencies using package.json deps
+6 verbose cache add [ 'grunt-phpdcd', null ]
+7 verbose cache add spec="grunt-phpdcd" args=["grunt-phpdcd",null]
+8 verbose parsed spec { raw: 'grunt-phpdcd',
+8 verbose parsed spec   scope: null,
+8 verbose parsed spec   name: 'grunt-phpdcd',
+8 verbose parsed spec   rawSpec: '',
+8 verbose parsed spec   spec: '*',
+8 verbose parsed spec   type: 'range' }
+9 verbose addNamed [ 'grunt-phpdcd', '*' ]
+10 verbose addNamed [ null, '*' ]
+11 silly lockFile f0adf5ec-grunt-phpdcd grunt-phpdcd@*
+12 verbose lock grunt-phpdcd@* /root/.npm/f0adf5ec-grunt-phpdcd.lock
+13 silly addNameRange { name: 'grunt-phpdcd', range: '*', hasData: false }
+14 verbose mapToRegistry name grunt-phpdcd
+15 verbose mapToRegistry uri https://registry.npmjs.org/grunt-phpdcd
+16 verbose request where is /grunt-phpdcd
+17 verbose request registry https://registry.npmjs.org/
+18 verbose request id 5eccb8339c792583
+19 verbose request url raw /grunt-phpdcd
+20 verbose request url resolving [ 'https://registry.npmjs.org/', './grunt-phpdcd' ]
+21 verbose request url resolved https://registry.npmjs.org/grunt-phpdcd
+22 verbose request where is https://registry.npmjs.org/grunt-phpdcd
+23 verbose request no basic auth needed
+24 info trying registry request attempt 1 at 12:09:58
+25 http GET https://registry.npmjs.org/grunt-phpdcd
+26 http 404 https://registry.npmjs.org/grunt-phpdcd
+27 verbose headers { date: 'Mon, 11 Aug 2014 07:08:31 GMT',
+27 verbose headers   server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+27 verbose headers   'content-type': 'application/json',
+27 verbose headers   'cache-control': 'max-age=0',
+27 verbose headers   'content-length': '52',
+27 verbose headers   'accept-ranges': 'bytes',
+27 verbose headers   via: '1.1 varnish',
+27 verbose headers   age: '0',
+27 verbose headers   'x-served-by': 'cache-lcy1132-LCY',
+27 verbose headers   'x-cache': 'MISS',
+27 verbose headers   'x-cache-hits': '0',
+27 verbose headers   'x-timer': 'S1407740911.111791,VS0,VE651',
+27 verbose headers   'keep-alive': 'timeout=10, max=50',
+27 verbose headers   connection: 'Keep-Alive' }
+28 silly registry.get cb [ 404,
+28 silly registry.get   { date: 'Mon, 11 Aug 2014 07:08:31 GMT',
+28 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+28 silly registry.get     'content-type': 'application/json',
+28 silly registry.get     'cache-control': 'max-age=0',
+28 silly registry.get     'content-length': '52',
+28 silly registry.get     'accept-ranges': 'bytes',
+28 silly registry.get     via: '1.1 varnish',
+28 silly registry.get     age: '0',
+28 silly registry.get     'x-served-by': 'cache-lcy1132-LCY',
+28 silly registry.get     'x-cache': 'MISS',
+28 silly registry.get     'x-cache-hits': '0',
+28 silly registry.get     'x-timer': 'S1407740911.111791,VS0,VE651',
+28 silly registry.get     'keep-alive': 'timeout=10, max=50',
+28 silly registry.get     connection: 'Keep-Alive' } ]
+29 silly lockFile f0adf5ec-grunt-phpdcd grunt-phpdcd@*
+30 silly lockFile f0adf5ec-grunt-phpdcd grunt-phpdcd@*
+31 error 404 404 Not Found: grunt-phpdcd
+31 error 404
+31 error 404 'grunt-phpdcd' is not in the npm registry.
+31 error 404 You should bug the author to publish it
+31 error 404 It was specified as a dependency of 'phpqatools-grunt'
+31 error 404
+31 error 404 Note that you can also install from a
+31 error 404 tarball, folder, or http url, or git url.
+32 error System Linux 3.11.0-26-generic
+33 error command "node" "/usr/bin/npm" "install" "grunt-phpdcd"
+34 error cwd /home/coeus/Signature-Appender
+35 error node -v v0.10.30
+36 error npm -v 2.0.0-alpha-5
+37 error code E404
+38 verbose exit [ 1, true ]
