@@ -25,14 +25,14 @@
 					</div>
 	<div class="info-box-body">
         		<!-- ========== Info from phpDoc block ========= -->
-<p class="short-description">This is the description for the Editor class.</p>
-<p class="description"><p>This class has one nonstatic method and on static method.</p></p>
+<p class="short-description">Adds signature in php files.</p>
+<p class="description"><p>This class has one zero parameterize constructor, two nonstatic methods  doEditingInPhp and printDetails. The basic purpose of this class is to  add siganature at the top of every .php file available in provided  directory.</p></p>
 	<ul class="tags">
 				<li><span class="field">author:</span> Tayyab Hussain</li>
-				<li><span class="field">version:</span> Version 1.0</li>
+				<li><span class="field">version:</span> Version 1.3</li>
 			</ul>
 		<p class="notes">
-			Located in <a class="field" href="_Editor.php.html">/Editor.php</a> (line <span class="field">13</span>)
+			Located in <a class="field" href="_Editor.php.html">/Editor.php</a> (line <span class="field">17</span>)
 		</p>
 		
 				
@@ -86,13 +86,7 @@
 		</div>
 		<div class="info-box-body">			
 			<div class="method-summary">
-																												<div class="method-definition">
-					<img src="../../media/images/StaticMethod.png" alt=" "/>
-											static <span class="method-result">this</span>
-										<a href="#finalizing" title="details" class="method-name">finalizing</a>
-											(<span class="var-type">(Array)</span>&nbsp;<span class="var-name">$count</span>, <span class="var-type">(number)</span>&nbsp;<span class="var-name">$filesArray</span>)
-									</div>
-																				<div class="method-definition">
+																																								<div class="method-definition">
 					<img src="../../media/images/Constructor.png" alt=" "/>
 											<span class="method-result">Editor</span>
 										<a href="#__construct" title="details" class="method-name">__construct</a>
@@ -100,11 +94,17 @@
 									</div>
 																<div class="method-definition">
 					<img src="../../media/images/Method.png" alt=" "/>
-											<span class="method-result">this</span>
+											<span class="method-result">void</span>
 										<a href="#doEditingInPhp" title="details" class="method-name">doEditingInPhp</a>
-											(<span class="var-type">this</span>&nbsp;<span class="var-name">0</span>)
+										()
 									</div>
-																			</div>
+																<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#printDetails" title="details" class="method-name">printDetails</a>
+											(<span class="var-type">Array</span>&nbsp;<span class="var-name">$filesArray</span>)
+									</div>
+											</div>
 		</div>
 	</div>		
 
@@ -130,7 +130,7 @@
 		<span class="var-title">
 			<span class="var-type">string</span>
 			<span class="var-name">$filesArray</span>
-						(line <span class="line-number">29</span>)
+						(line <span class="line-number">30</span>)
 		</span>
 	</div>
 
@@ -153,7 +153,7 @@
 		<span class="var-title">
 			<span class="var-type">string</span>
 			<span class="var-name">$pathToDir</span>
-						(line <span class="line-number">19</span>)
+						(line <span class="line-number">22</span>)
 		</span>
 	</div>
 
@@ -176,7 +176,7 @@
 		<span class="var-title">
 			<span class="var-type">string</span>
 			<span class="var-name">$textInput</span>
-						(line <span class="line-number">24</span>)
+						(line <span class="line-number">26</span>)
 		</span>
 	</div>
 
@@ -206,52 +206,17 @@
 		</div>
 		<div class="info-box-body">
 			<A NAME='method_detail'></A>
-<a name="methodfinalizing" id="finalizing"><!-- --></a>
+<a name="method__construct" id="__construct"><!-- --></a>
 <div class="oddrow">
 	
 	<div class="method-header">
-		<img src="../../media/images/StaticMethod.png" />
-		<span class="method-title">static finalizing</span> (line <span class="line-number">136</span>)
-	</div> 
-	
-	<!-- ========== Info from phpDoc block ========= -->
-<p class="short-description">finalizing</p>
-<p class="description"><p>This function takes two parameters and checks how many  files have been updated and also shows the names  and size of each file updated, if there is no file  updated then it will shows an error message</p></p>
-	<ul class="tags">
-				<li><span class="field">return:</span> function is not returning anything</li>
-				<li><span class="field">access:</span> public</li>
-			</ul>
-	
-	<div class="method-signature">
-		<span class="method-result">this</span>
-		<span class="method-name">
-			finalizing
-		</span>
-					(<span class="var-type">(Array)</span>&nbsp;<span class="var-name">$count</span>, <span class="var-type">(number)</span>&nbsp;<span class="var-name">$filesArray</span>)
-			</div>
-	
-			<ul class="parameters">
-					<li>
-				<span class="var-type">(Array)</span>
-				<span class="var-name">$count</span><span class="var-description">: ($filesArray) this array holds path to each .php file</span>			</li>
-					<li>
-				<span class="var-type">(number)</span>
-				<span class="var-name">$filesArray</span><span class="var-description">: ($count) this variable is to check that how many files  has been updated</span>			</li>
-				</ul>
-		
-			
-	</div>
-<a name="method__construct" id="__construct"><!-- --></a>
-<div class="evenrow">
-	
-	<div class="method-header">
 		<img src="../../media/images/Constructor.png" />
-		<span class="method-title">Constructor __construct</span> (line <span class="line-number">35</span>)
+		<span class="method-title">Constructor __construct</span> (line <span class="line-number">38</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
-<p class="short-description">Constructor</p>
-<p class="description"><p>This constructor is to initilize all the class variables</p></p>
+<p class="short-description">Initializes the class variables</p>
+<p class="description"><p>This zero parameterize constructor is to just initilize all  the class variables</p></p>
 	<ul class="tags">
 				<li><span class="field">access:</span> public</li>
 			</ul>
@@ -268,33 +233,58 @@
 			
 	</div>
 <a name="methoddoEditingInPhp" id="doEditingInPhp"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">doEditingInPhp</span> (line <span class="line-number">58</span>)
+		<span class="method-title">doEditingInPhp</span> (line <span class="line-number">57</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
-<p class="short-description">doEditingInPhp</p>
-<p class="description"><p>This is main function of Editor class, It prompts user to input  the path to the directory and also prompt to enter the signature  that we want to add at the top of every .php file present in  provided directory. This function also provide information  regarding files present in provided directory i.e name and size  of each file before and after updation by calling another method  finalizing($count, $filesArray).</p></p>
+<p class="short-description">Adds signature in php files</p>
+<p class="description"><p>This is main function of Editor class, It prompts user to input  the path to the directory and also prompt to enter the signature  that we want to add at the top of every .php file present in  provided directory. It picks all the text present in file and  appends signature and puts all the contents back into file.  This function also provide information regarding files present  in provided directory i.e name and size of each file before and  after updation by calling another method finalizing($filesArray).</p></p>
 	<ul class="tags">
-				<li><span class="field">return:</span> function is not returning anything</li>
 				<li><span class="field">access:</span> public</li>
 			</ul>
 	
 	<div class="method-signature">
-		<span class="method-result">this</span>
+		<span class="method-result">void</span>
 		<span class="method-name">
 			doEditingInPhp
 		</span>
-					(<span class="var-type">this</span>&nbsp;<span class="var-name">0</span>)
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodprintDetails" id="printDetails"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">printDetails</span> (line <span class="line-number">123</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Shows details of upated files</p>
+<p class="description"><p>This function takes one parameters and displays how many  files have been updated and also shows the names  and size of each file updated, if there is no file  updated.</p></p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			printDetails
+		</span>
+					(<span class="var-type">Array</span>&nbsp;<span class="var-name">$filesArray</span>)
 			</div>
 	
 			<ul class="parameters">
 					<li>
-				<span class="var-type">this</span>
-				<span class="var-name">0</span><span class="var-description">: function not receiving any parameter</span>			</li>
+				<span class="var-type">Array</span>
+				<span class="var-name">$filesArray</span><span class="var-description">: this array holds path to each .php file</span>			</li>
 				</ul>
 		
 			
@@ -305,7 +295,7 @@
 
 	
 	<p class="notes" id="credit">
-		Documentation generated on Mon, 11 Aug 2014 16:34:57 +0500 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
+		Documentation generated on Tue, 12 Aug 2014 16:11:24 +0500 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
 	</p>
 	</div></body>
 </html>

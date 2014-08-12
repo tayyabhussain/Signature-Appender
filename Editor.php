@@ -1,61 +1,64 @@
 <?php
-
 /**
- * This is the description for the Editor class.
- * This class has one nonstatic method and on static method,
- * The basic purpose of this class is to add siganature at 
- * the top of every .php file available in provided directory
+ * Adds signature in php files.
+ *
+ * This class has one zero parameterize constructor, two nonstatic methods
+ * doEditingInPhp and printDetails. The basic purpose of this class is to
+ * add siganature at the top of every .php file available in provided
+ * directory.
+ *
  * 
  * @package    var.www
  * @subpackage Assigment
  * @author     Tayyab Hussain
- * @version    Version 1.1
+ * @version    Version 1.3
  * 
  */
-class Editor {
-
+class Editor
+{
     /**
      * @var string pathToDir for path to the directory
      */
     public $pathToDir;
-
     /**
      * @var string textInput for signature to be added
      */
     public $textInput;
-
     /**
      * @var string array textInput for path to each file
      */
     public $filesArray;
-
     /**
-     * Constructor
-     * This constructor is to initilize all the class variables
+     * Initializes the class variables
+     * 
+     * This zero parameterize constructor is to just initilize all
+     * the class variables
+     *
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->pathToDir = NULL;
-        
         $this->textInput = NULL;
-
         $this->filesArray = NULL;
     }
-
     /**
-     * doEditingInPhp
+     * Adds signature in php files
      *
      * This is main function of Editor class, It prompts user to input
      * the path to the directory and also prompt to enter the signature
      * that we want to add at the top of every .php file present in
-     * provided directory. This function also provide information
-     * regarding files present in provided directory i.e name and size
-     * of each file before and after updation by calling another method 
-     * finalizing($count, $filesArray).
+     * provided directory. It picks all the text present in file and 
+     * appends signature and puts all the contents back into file.
+     * This function also provide information regarding files present
+     * in provided directory i.e name and size of each file before and
+     * after updation by calling another method finalizing($filesArray).
      *
      */
-    public function doEditingInPhp() {
+    public function doEditingInPhp()
+    {
 
-        if (!defined("STDIN")) {
+        if (!defined("STDIN"))
+        {
             define("STDIN", fopen('php://stdin', 'r'));
         }
 
@@ -71,7 +74,8 @@ class Editor {
         $this->filesArray = glob($this->pathToDir . "*.php");
 
         //checking if files exits in folder or not
-        if (count($this->filesArray) > 0) {
+        if (count($this->filesArray) > 0)
+        {
 
             //getting text from user
             echo 'Hello! Enter the Text that you want to merge' .
@@ -83,7 +87,8 @@ class Editor {
 
             // foreach loop to iterate each .php file
             // in given directory
-            foreach ($this->filesArray as $file) {
+            foreach ($this->filesArray as $file)
+            {
 
                 // list down all the .php files in that folder 
                 echo $file . ' ' . filesize($file) . 'kb '.PHP_EOL;
@@ -97,32 +102,30 @@ class Editor {
                 file_put_contents($file, $contents);
             }
 
-            $this->finalizing($this->filesArray);
-        } else {
+            $this->printDetails($this->filesArray);
+        } else 
+        {
             echo 'ERROR: provied directory has not any .php file' .
             'or provided path is valid'.PHP_EOL;
         }
     }
-
     /**
-     * finalizing
+     * Shows details of upated files
      *
-     * This function takes two parameters and checks how many
+     * This function takes one parameters and displays how many
      * files have been updated and also shows the names
      * and size of each file updated, if there is no file
-     * updated then it will shows an error message
+     * updated.
      *
-     * @param (Array) ($filesArray) this array holds path to each .php file
-     * @param (number) ($count) this variable is to check that how many files
-     * has been updated
+     * @param Array $filesArray this array holds path to each .php file
+     * 
      */
-    public function finalizing($filesArray) {
-
+    public function printDetails($filesArray)
+    {
         echo count($filesArray) . ' files has been updated'.PHP_EOL
         .' New details are given below '.PHP_EOL;
 
         // list down files after updation
-
         foreach ($filesArray as $file) {
 
             echo $file . ' ' . filesize($file) . 'kb'.PHP_EOL;
