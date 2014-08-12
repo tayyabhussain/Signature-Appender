@@ -84,15 +84,14 @@ class Editor
      * and size of each file updated, if there is no file
      * updated.
      *
-     * @param Array $filesArray this array holds path to each .php file
      */
-    public function printDetails($filesArray)
+    public function printDetails()
     {
 
-        echo count($filesArray) . ' files has been updated'.PHP_EOL
+        echo count($this->filesArray) . ' files has been updated'.PHP_EOL
         .' New details are given below '.PHP_EOL;
         // list down files after updation
-        foreach ($filesArray as $file) {
+        foreach ($this->filesArray as $file) {
             echo $file . ' ' . filesize($file) . 'kb'.PHP_EOL;
         }
     }
