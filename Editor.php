@@ -7,12 +7,10 @@
  * add siganature at the top of every .php file available in provided
  * directory.
  *
- * 
  * @package    var.www
  * @subpackage Assigment
  * @author     Tayyab Hussain
  * @version    Version 1.3
- * 
  */
 class Editor
 {
@@ -29,19 +27,6 @@ class Editor
      */
     public $filesArray;
     /**
-     * Initializes the class variables
-     * 
-     * This zero parameterize constructor is to just initilize all
-     * the class variables
-     *
-     */
-    public function __construct()
-    {
-        $this->pathToDir = NULL;
-        $this->textInput = NULL;
-        $this->filesArray = NULL;
-    }
-    /**
      * Adds signature in php files
      *
      * This is main function of Editor class, It prompts user to input
@@ -52,59 +37,41 @@ class Editor
      * This function also provide information regarding files present
      * in provided directory i.e name and size of each file before and
      * after updation by calling another method finalizing($filesArray).
-     *
      */
     public function doEditingInPhp()
     {
 
-        if (!defined("STDIN"))
-        {
+        if (!defined("STDIN")){
             define("STDIN", fopen('php://stdin', 'r'));
         }
-
         // getting path from user
         echo 'Hello! What is your complete path to the' .
         ' directory (enter below):' . PHP_EOL;
-
         $this->pathToDir = fread(STDIN, 80);
-
         $this->pathToDir = trim($this->pathToDir);
-
         // get all text files with a .php extension into an array.
         $this->filesArray = glob($this->pathToDir . "*.php");
-
         //checking if files exits in folder or not
-        if (count($this->filesArray) > 0)
-        {
-
+        if (count($this->filesArray) > 0){
             //getting text from user
             echo 'Hello! Enter the Text that you want to merge' .
             ' in php file (enter below):' . PHP_EOL;
-
             $this->textInput = fread(STDIN, 80);
-
             $this->textInput = trim($this->textInput);
-
             // foreach loop to iterate each .php file
             // in given directory
-            foreach ($this->filesArray as $file)
-            {
-
+            foreach ($this->filesArray as $file){
                 // list down all the .php files in that folder 
                 echo $file . ' ' . filesize($file) . 'kb '.PHP_EOL;
-
                 $contents = file_get_contents($file);
-
                 // concatenating user input with the previously present text
                 $contents = $this->textInput . $contents;
-
                 // writing the new text in file
                 file_put_contents($file, $contents);
             }
 
             $this->printDetails($this->filesArray);
-        } else 
-        {
+        } else {
             echo 'ERROR: provied directory has not any .php file' .
             'or provided path is valid'.PHP_EOL;
         }
@@ -118,16 +85,14 @@ class Editor
      * updated.
      *
      * @param Array $filesArray this array holds path to each .php file
-     * 
      */
     public function printDetails($filesArray)
     {
+
         echo count($filesArray) . ' files has been updated'.PHP_EOL
         .' New details are given below '.PHP_EOL;
-
         // list down files after updation
         foreach ($filesArray as $file) {
-
             echo $file . ' ' . filesize($file) . 'kb'.PHP_EOL;
         }
     }
