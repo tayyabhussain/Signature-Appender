@@ -31,7 +31,7 @@ module.exports = function(grunt) {
 
   phpcpd: {
     application: {
-      dir: '*.php'
+      dir: ['*.php']
     },
     options: {
       bin: 'vendor/bin/phpcpd',
@@ -56,6 +56,16 @@ module.exports = function(grunt) {
         },
           command: 'php phpdcd.phar *.php' // to run php dcd through shell 
         }
+      },
+
+      phpdcd: {
+        application: {
+          dir: ['*.php']
+        },
+        options: {
+          namesExclude: 'config.php,settings.php',
+          bin:'vendor/bin/phpdcd'
+        }
       }
 
     });
@@ -65,9 +75,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-phpcs');
     grunt.loadNpmTasks('grunt-phpcpd');
     grunt.loadNpmTasks('grunt-phpdocumentor');
+    grunt.loadNpmTasks('grunt-phpdcd');
     grunt.loadNpmTasks('grunt-shell');
 
 
     // Task definitions
-    grunt.registerTask('default', ['phpcs', 'phpmd','phpcpd','phpdocumentor','shell']);
+    grunt.registerTask('default', ['phpcs', 'phpmd','phpcpd','phpdocumentor','shell','phpdcd']);
   };

@@ -2,16 +2,17 @@
 
 /**
  * This is the description for the Editor class.
- * This class has one nonstatic method and on static method.
- *
+ * This class has one nonstatic method and on static method,
+ * The basic purpose of this class is to add siganature at 
+ * the top of every .php file available in provided directory
+ * 
  * @package    var.www
  * @subpackage Assigment
  * @author     Tayyab Hussain
- * @version    Version 1.0
+ * @version    Version 1.1
  * 
  */
-class Editor
-{
+class Editor {
 
     /**
      * @var string pathToDir for path to the directory
@@ -32,13 +33,12 @@ class Editor
      * Constructor
      * This constructor is to initilize all the class variables
      */
-    public function __construct()
-    {
-        $pathToDir = NULL;
+    public function __construct() {
+        $this->pathToDir = NULL;
+        
+        $this->textInput = NULL;
 
-        $textInput = NULL;
-
-        $filesArray = NULL;
+        $this->filesArray = NULL;
     }
 
     /**
@@ -52,72 +52,56 @@ class Editor
      * of each file before and after updation by calling another method 
      * finalizing($count, $filesArray).
      *
-     * @param this function not receiving any parameter
-     * @return this function is not returning anything
      */
-    public function doEditingInPhp()
-    {
+    public function doEditingInPhp() {
 
         if (!defined("STDIN")) {
             define("STDIN", fopen('php://stdin', 'r'));
         }
 
         // getting path from user
+        echo 'Hello! What is your complete path to the' .
+        ' directory (enter below):' . PHP_EOL;
 
-        echo "Hello! What is your complete path to the".
-        " directory (enter below):\n";
+        $this->pathToDir = fread(STDIN, 80);
 
-        $pathToDir = fread(STDIN, 80);
+        $this->pathToDir = trim($this->pathToDir);
 
-        $pathToDir = trim($pathToDir);
+        // get all text files with a .php extension into an array.
+        $this->filesArray = glob($this->pathToDir . "*.php");
 
-        //get all text files with a .php extension into an array.
+        //checking if files exits in folder or not
+        if (count($this->filesArray) > 0) {
 
-        $filesArray = glob($pathToDir . "*.php");
+            //getting text from user
+            echo 'Hello! Enter the Text that you want to merge' .
+            ' in php file (enter below):' . PHP_EOL;
 
-        //getting text from user
+            $this->textInput = fread(STDIN, 80);
 
-        echo "Hello! Enter the Text that you want to merge".
-        " in php file (enter below):\n";
+            $this->textInput = trim($this->textInput);
 
-        $textInput = fread(STDIN, 80);
+            // foreach loop to iterate each .php file
+            // in given directory
+            foreach ($this->filesArray as $file) {
 
-        $textInput = trim($textInput);
+                // list down all the .php files in that folder 
+                echo $file . ' ' . filesize($file) . 'kb '.PHP_EOL;
 
-        // using a count variable to check number
-        // of .php files present in directory
+                $contents = file_get_contents($file);
 
-        $count = 0;
+                // concatenating user input with the previously present text
+                $contents = $this->textInput . $contents;
 
-        // foreach loop to iterate each .php file
-        // in given directory
-
-        foreach ($filesArray as $file) {
-
-            // list down all the .php files in that folder 
-
-            echo $file . " " . filesize($file) . "kb\n ";
-
-            if (!file_exists($file)) {
-                die("Die");
+                // writing the new text in file
+                file_put_contents($file, $contents);
             }
 
-            $contents = file_get_contents($file);
-
-            // concatenating user input with the previously present text
-
-            $contents = $textInput . $contents;
-
-            // writing the new text in file
-
-            file_put_contents($file, $contents);
-
-            // increament in count variable
-
-            $count++;
+            $this->finalizing($this->filesArray);
+        } else {
+            echo 'ERROR: provied directory has not any .php file' .
+            'or provided path is valid'.PHP_EOL;
         }
-
-        self::finalizing($count, $filesArray);
     }
 
     /**
@@ -131,29 +115,18 @@ class Editor
      * @param (Array) ($filesArray) this array holds path to each .php file
      * @param (number) ($count) this variable is to check that how many files
      * has been updated
-     * @return this function is not returning anything
      */
-    public static function finalizing($count, $filesArray)
-    {
-        if ($count == 0) {
+    public function finalizing($filesArray) {
 
-            echo "Error ! There is no .php file in given".
-            " directory (check path) \n";
-        } else {
+        echo count($filesArray) . ' files has been updated'.PHP_EOL
+        .' New details are given below '.PHP_EOL;
 
-            echo $count . " files has been updated\n".
-            " New details are given below \n";
+        // list down files after updation
 
-            // list down files after updation
+        foreach ($filesArray as $file) {
 
-            foreach ($filesArray as $file) {
-
-                echo $file . " " . filesize($file) . "kb\n ";
-            }
+            echo $file . ' ' . filesize($file) . 'kb'.PHP_EOL;
         }
     }
 
 }
-
-
-
