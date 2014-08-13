@@ -49,12 +49,17 @@ class Editor
         ' directory (enter below):' . PHP_EOL;
         $this->pathToDir = fread(STDIN, 80);
         $this->pathToDir = trim($this->pathToDir);
+        //checking if last character is /
+        if(substr($this->pathToDir, -1)!='/'){
+            //appending / at the end of path if there is not
+            $this->pathToDir=$this->pathToDir.'/';
+        }
         // get all text files with a .php extension into an array.
         $this->filesArray = glob($this->pathToDir . "*.php");
         //checking if files exits in folder or not
         if (count($this->filesArray) > 0){
             //getting text from user
-            echo 'Hello! Enter the Text that you want to merge' .
+            echo 'Hello! Enter the Text that you want to merge'.
             ' in php file (enter below):' . PHP_EOL;
             $this->textInput = fread(STDIN, 80);
             $this->textInput = trim($this->textInput);
@@ -65,7 +70,7 @@ class Editor
                 echo $file . ' ' . filesize($file) . 'kb '.PHP_EOL;
                 $contents = file_get_contents($file);
                 // concatenating user input with the previously present text
-                $contents = $this->textInput . $contents;
+                $contents = $this->textInput .PHP_EOL. $contents;
                 // writing the new text in file
                 file_put_contents($file, $contents);
             }
