@@ -2,14 +2,13 @@
 /**
  * Adds signature in php files.
  *
- * This class has one zero parameterize constructor, two nonstatic methods
- * doEditingInPhp and printDetails. The basic purpose of this class is to
- * add siganature at the top of every .php file available in provided
- * directory.
+ * This class has two nonstatic methods doEditingInPhp and printDetails.
+ * The basic purpose of this class is to add siganature at the top of 
+ * every .php file available in provided directory.
  *
  * @package    var.www
  * @subpackage Assigment
- * @author     Tayyab Hussain
+ * @author     Tayyab Hussain tayyab.hussain@coeus-solutions.de
  * @version    Version 1.3
  */
 class Editor
@@ -36,7 +35,7 @@ class Editor
      * appends signature and puts all the contents back into file.
      * This function also provide information regarding files present
      * in provided directory i.e name and size of each file before and
-     * after updation by calling another method finalizing($filesArray).
+     * after updation by calling another method printDetails.
      */
     public function doEditingInPhp()
     {
@@ -79,11 +78,9 @@ class Editor
     /**
      * Shows details of upated files
      *
-     * This function takes one parameters and displays how many
-     * files have been updated and also shows the names
-     * and size of each file updated, if there is no file
-     * updated.
-     *
+     * This function displays how many files have been updated and
+     * also shows the names and size of each file updated,  if there
+     * is no file updated.
      */
     public function printDetails()
     {
