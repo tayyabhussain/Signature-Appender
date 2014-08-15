@@ -48,13 +48,10 @@ class Editor
         ' directory (enter below):' . PHP_EOL;
         $this->pathToDir = fread(STDIN, 80);
         $this->pathToDir = trim($this->pathToDir);
-<<<<<<< HEAD
         //checking if last character is /
-        if(substr($this->pathToDir, -1)!='/'){
-=======
+        if (substr($this->pathToDir, -1)!='/') {
         // checking if last character is /
         if (substr($this->pathToDir, -1)!='/') {
->>>>>>> 301ef038ebb519586e0f76b1a19cb4e5649e312f
             //appending / at the end of path if there is not
             $this->pathToDir=$this->pathToDir.'/';
         }
