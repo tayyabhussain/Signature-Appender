@@ -2,14 +2,13 @@
 /**
  * Adds signature in php files.
  *
- * This class has one zero parameterize constructor, two nonstatic methods
- * doEditingInPhp and printDetails. The basic purpose of this class is to
- * add siganature at the top of every .php file available in provided
- * directory.
+ * This class has two nonstatic methods doEditingInPhp and printDetails.
+ * The basic purpose of this class is to add siganature at the top of 
+ * every .php file available in provided directory.
  *
  * @package    var.www
  * @subpackage Assigment
- * @author     Tayyab Hussain
+ * @author     Tayyab Hussain tayyab.hussain@coeus-solutions.de
  * @version    Version 1.3
  */
 class Editor
@@ -36,7 +35,7 @@ class Editor
      * appends signature and puts all the contents back into file.
      * This function also provide information regarding files present
      * in provided directory i.e name and size of each file before and
-     * after updation by calling another method finalizing($filesArray).
+     * after updation by calling another method printDetails.
      */
     public function doEditingInPhp()
     {
@@ -49,12 +48,17 @@ class Editor
         ' directory (enter below):' . PHP_EOL;
         $this->pathToDir = fread(STDIN, 80);
         $this->pathToDir = trim($this->pathToDir);
+        //checking if last character is /
+        if(substr($this->pathToDir, -1)!='/'){
+            //appending / at the end of path if there is not
+            $this->pathToDir=$this->pathToDir.'/';
+        }
         // get all text files with a .php extension into an array.
         $this->filesArray = glob($this->pathToDir . "*.php");
         //checking if files exits in folder or not
         if (count($this->filesArray) > 0){
             //getting text from user
-            echo 'Hello! Enter the Text that you want to merge' .
+            echo 'Hello! Enter the Text that you want to merge'.
             ' in php file (enter below):' . PHP_EOL;
             $this->textInput = fread(STDIN, 80);
             $this->textInput = trim($this->textInput);
@@ -65,7 +69,7 @@ class Editor
                 echo $file . ' ' . filesize($file) . 'kb '.PHP_EOL;
                 $contents = file_get_contents($file);
                 // concatenating user input with the previously present text
-                $contents = $this->textInput . $contents;
+                $contents = $this->textInput .PHP_EOL. $contents;
                 // writing the new text in file
                 file_put_contents($file, $contents);
             }
@@ -79,11 +83,9 @@ class Editor
     /**
      * Shows details of upated files
      *
-     * This function takes one parameters and displays how many
-     * files have been updated and also shows the names
-     * and size of each file updated, if there is no file
-     * updated.
-     *
+     * This function displays how many files have been updated and
+     * also shows the names and size of each file updated,  if there
+     * is no file updated.
      */
     public function printDetails()
     {
