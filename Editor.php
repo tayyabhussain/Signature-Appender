@@ -40,7 +40,7 @@ class Editor
     public function doEditingInPhp()
     {
 
-        if (!defined("STDIN")){
+        if (!defined("STDIN")) {
             define("STDIN", fopen('php://stdin', 'r'));
         }
         // getting path from user
@@ -48,15 +48,20 @@ class Editor
         ' directory (enter below):' . PHP_EOL;
         $this->pathToDir = fread(STDIN, 80);
         $this->pathToDir = trim($this->pathToDir);
+<<<<<<< HEAD
         //checking if last character is /
         if(substr($this->pathToDir, -1)!='/'){
+=======
+        // checking if last character is /
+        if (substr($this->pathToDir, -1)!='/') {
+>>>>>>> 301ef038ebb519586e0f76b1a19cb4e5649e312f
             //appending / at the end of path if there is not
             $this->pathToDir=$this->pathToDir.'/';
         }
         // get all text files with a .php extension into an array.
         $this->filesArray = glob($this->pathToDir . "*.php");
-        //checking if files exits in folder or not
-        if (count($this->filesArray) > 0){
+        // checking if files exits in folder or not
+        if (count($this->filesArray) > 0) {
             //getting text from user
             echo 'Hello! Enter the Text that you want to merge'.
             ' in php file (enter below):' . PHP_EOL;
@@ -64,7 +69,7 @@ class Editor
             $this->textInput = trim($this->textInput);
             // foreach loop to iterate each .php file
             // in given directory
-            foreach ($this->filesArray as $file){
+            foreach ($this->filesArray as $file) {
                 // list down all the .php files in that folder 
                 echo $file . ' ' . filesize($file) . 'kb '.PHP_EOL;
                 $contents = file_get_contents($file);
