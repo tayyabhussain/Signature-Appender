@@ -1,3 +1,4 @@
+
 <?php
 /**
  * This file contains a Editor class
@@ -123,14 +124,14 @@ class Editor
         // getting path from user
         echo 'Hello! What is your complete path to the  directory or if ' .
         'you want to append signature in php files of current directory' .
-        'just press "Enter" (enter below):' . PHP_EOL;
+        'just press Enter (enter below):' . PHP_EOL;
         $this->pathToDir = fread(STDIN, 80);
         $this->pathToDir = trim($this->pathToDir);
-
-        if ($this->pathToDir == '') {
+        // checking if user has entered the path or not
+        // if not than use working directory for modification
+        if ($this->pathToDir == NULL) {
             $this->pathToDir = getcwd() . '/';
         }
-        echo $this->pathToDir;
         if (substr($this->pathToDir, -1) != '/') {
             $this->pathToDir = $this->pathToDir . '/';
         }

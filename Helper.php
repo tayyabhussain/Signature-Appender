@@ -1,3 +1,4 @@
+
 <?php
 /**
  * This file contains a Helper class
